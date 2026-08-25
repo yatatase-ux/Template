@@ -20,6 +20,14 @@ T max(T a, T b)
 	return a > b ? a : b;
 }
 
+template<class T>
+void max_out(T a, T b)
+{
+	T n = (a > b) ? a : b;
+
+	std::cout << "max: " << n << std::endl;
+}
+
 int main()
 {
 	int a = 20;
@@ -34,6 +42,11 @@ int main()
 
 	std::cout << "max: " << max(a, b) << std::endl;
 	std::cout << "max: " << max(c, d) << std::endl;
+
+	std::cout << std::endl;
+
+	max_out(a, b);
+	max_out(c, d);
 
 } 
 
