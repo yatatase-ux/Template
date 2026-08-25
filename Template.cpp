@@ -22,16 +22,18 @@ T max(T a, T b)
 
 int main()
 {
-	float a = 10.1;
-	float b = 10.2;
+	int a = 20;
+	int b = 21;
+	float c = 10.1f;
+	float d = 10.2f;
+
 
 	//std::cout << "max: " << max_int(a, b) << std::endl;
 	//std::cout << "max: " << max_long(a, b) << std::endl;
 	//std::cout << "max: " << max_float(a, b) << std::endl;
 
 	std::cout << "max: " << max(a, b) << std::endl;
-	std::cout << "max: " << max(a, b) << std::endl;
-	std::cout << "max: " << max(a, b) << std::endl;
+	std::cout << "max: " << max(c, d) << std::endl;
 
 } 
 
