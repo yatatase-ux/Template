@@ -25,7 +25,7 @@ T max(T a, T b)
 	return a > b ? a : b;
 }
 
-// 
+// ↑と同じ機能で出力も同時に行う関数
 template<class T>
 void max_out(T a, T b)
 {
