@@ -68,7 +68,13 @@ template<typename U, std::size_t N> struct IsArray<U[N]> {
 
 //-----------------------------------------------------------------------------------
 // 演習②：const型を判定する(期待する結果：0, 1, 0, 1)
+template<typename T> struct IsConst {
+	static constexpr bool value = false;
+};
 
+template<typename U> struct IsConst<const U> {
+	static constexpr bool value = true;
+};
 
 //===================================================================================
 int main()
@@ -113,12 +119,25 @@ int main()
 	//std::cout << IsPointer<float*>::value << std::endl;
 	//std::cout << NoPointer::value << std::endl;
 
-//------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------
+// 	   この下↓より演習
+//------------------------------------------------------------------------------
+	// 配列型の判定
+	std::cout << "配列型の判定" << std::endl;
 	std::cout << IsArray<int>::value << std::endl;
 	std::cout << IsArray<int[10]>::value << std::endl;
 	std::cout << IsArray<float[5]>::value << std::endl;
 
+//------------------------------------------------------------------------------
+	std::cout << std::endl;
+//------------------------------------------------------------------------------
+	// const型の判定
+	std::cout << "const型の判定" << std::endl;
+	std::cout << IsConst<int>::value << std::endl;
+	std::cout << IsConst<const int>::value << std::endl;
+	std::cout << IsConst<float>::value << std::endl;
+	std::cout << IsConst<const float>::value << std::endl;
 } 
 
 
