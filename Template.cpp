@@ -1,19 +1,19 @@
 ﻿#include <iostream>
 
-//int max_int(int a, int b)
-//{
-//	return a > b ? a : b;
-//}
-//
-//long max_long(long a, long b)
-//{
-//	return a > b ? a : b;
-//}
-//
-//float max_float(float a, float b)
-//{
-//	return a > b ? a : b;
-//}
+int max_int(int a, int b)
+{
+	return a > b ? a : b;
+}
+
+long max_long(long a, long b)
+{
+	return a > b ? a : b;
+}
+
+float max_float(float a, float b)
+{
+	return a > b ? a : b;
+}
 
 template<class T>
 T max(T a, T b)
@@ -42,6 +42,20 @@ public:
 	constexpr std::size_t size() const { return N; }
 };
 
+//-----------------------------------------------------------------------------------
+// テンプレートの特殊化
+template<typename T> struct IsPointer {
+	static constexpr bool value = false;
+};
+
+template<typename U> struct IsPointer<U*> {
+	static constexpr bool value = true;
+};
+
+struct NoPointer : IsPointer<int> {
+
+};
+
 //===================================================================================
 int main()
 {
@@ -64,17 +78,25 @@ int main()
 // 
 //-------------------------------------------------------------------------------
 
-	StaticArray<int, 3> data;
+	//StaticArray<int, 3> data;
 
-	for (auto i = 0; i < data.size(); i++)
-	{
-		data[i] = i;
-	}
+	//for (auto i = 0; i < data.size(); i++)
+	//{
+	//	data[i] = i;
+	//}
 
-	for(int i = 0; i < 550; i++)
-	{
-		std::cout << i << " : " <<  data[i] << std::endl;
-	}
+	//for(int i = 0; i < 550; i++)
+	//{
+	//	std::cout << i << " : " <<  data[i] << std::endl;
+	//}
+
+//------------------------------------------------------------------------------
+
+	std::cout << IsPointer<int>::value << std::endl;
+	std::cout << IsPointer<int*>::value << std::endl;
+	std::cout << IsPointer<float>::value << std::endl;
+	std::cout << IsPointer<float*>::value << std::endl;
+	std::cout << NoPointer::value << std::endl;
 
 } 
 
