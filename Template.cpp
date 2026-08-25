@@ -1,26 +1,31 @@
 ﻿#include <iostream>
+#include <queue>
+#include <vector>
+
+/*
+・テンプレート…型や定数をパラメータ化して、コンパイル時に実体化する仕組み
+*/
 
 int max_int(int a, int b)
 {
 	return a > b ? a : b;
 }
-
 long max_long(long a, long b)
 {
 	return a > b ? a : b;
 }
-
 float max_float(float a, float b)
 {
 	return a > b ? a : b;
 }
-
+// ↑上記３つを下↓の１つだけで対応可能
 template<class T>
 T max(T a, T b)
 {
 	return a > b ? a : b;
 }
 
+// 
 template<class T>
 void max_out(T a, T b)
 {
@@ -142,7 +147,3 @@ int main()
 	std::cout << IsConst<const float>::value << std::endl;
 } 
 
-
-/*
-・テンプレート…型や定数をパラメータ化して、コンパイル時に実体化する仕組み
-*/
