@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+
 //int max_int(int a, int b)
 //{
 //	return a > b ? a : b;
@@ -28,25 +29,52 @@ void max_out(T a, T b)
 	std::cout << "max: " << n << std::endl;
 }
 
+//----------------------------------------------------------------------------------
+
+template<typename T, std::size_t N>
+class StaticArray
+{
+	T data[N];
+
+public:
+	constexpr T& operator[](std::size_t i) { return data[i]; }
+	constexpr const T& operator[](std::size_t i) const { return data[i]; }
+	constexpr std::size_t size() const { return N; }
+};
+
+//===================================================================================
 int main()
 {
-	int a = 20;
-	int b = 21;
-	float c = 10.1f;
-	float d = 10.2f;
+//	int a = 20;
+//	int b = 21;
+//	float c = 10.1f;
+//	float d = 10.2f;
+//
+//	//std::cout << "max: " << max_int(a, b) << std::endl;
+//	//std::cout << "max: " << max_long(a, b) << std::endl;
+//	//std::cout << "max: " << max_float(a, b) << std::endl;
+//
+//	std::cout << "max: " << max(a, b) << std::endl;
+//	std::cout << "max: " << max(c, d) << std::endl;
+//
+//	std::cout << std::endl;
+//
+//	max_out(a, b);
+//	max_out(c, d);
+// 
+//-------------------------------------------------------------------------------
 
+	StaticArray<int, 3> data;
 
-	//std::cout << "max: " << max_int(a, b) << std::endl;
-	//std::cout << "max: " << max_long(a, b) << std::endl;
-	//std::cout << "max: " << max_float(a, b) << std::endl;
+	for (auto i = 0; i < data.size(); i++)
+	{
+		data[i] = i;
+	}
 
-	std::cout << "max: " << max(a, b) << std::endl;
-	std::cout << "max: " << max(c, d) << std::endl;
-
-	std::cout << std::endl;
-
-	max_out(a, b);
-	max_out(c, d);
+	for(int i = 0; i < 550; i++)
+	{
+		std::cout << i << " : " <<  data[i] << std::endl;
+	}
 
 } 
 
